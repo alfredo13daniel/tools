@@ -1,34 +1,57 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    body, html { 
-      background: transparent !important; 
-      margin: 0; 
-      padding: 0;
+  <head>
+    <title>multiplicação</title>
+  </head>
+  <body style="
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding-top: 30px
+        box-sizing: border-box">
+  <h1
+    id=a
+    style="
+      margin: 0;
+      font-size: 100px;
+      flex-grow: 1; 
       display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      height: 100vh; 
-      overflow: hidden;
-    }
-    #math-output { 
-      font-size: 40px; 
-      color: #ffffff; 
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div id="math-output"></div>
-  <script>
-    window.addEventListener('message', function(event) {
-      const output = document.getElementById('math-output');
-      output.innerHTML = `\\( ${event.data} \\)`;
-      MathJax.typesetPromise([output]);
-    });
-  </script>
-</body>
-  </html>
-  
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif"></h1>
+    <script>
+      let x;
+      let y;
+      let ejer;
+      let resp;
+      function G (titulo) {
+        if (titulo == false) {
+          x = Math.floor(Math.random()*21)-10
+          y = Math.floor(Math.random()*21)-10
+          resp = x*y
+          if ( x < 0 ) {
+            x="(" + x + ")"
+          }
+          if ( y < 0 ) {
+            y="(" + y + ")"
+          }
+          ejer = document.getElementById("a")
+          a.innerHTML = `${x} &times; ${y}`; 
+        } else {
+          a.innerHTML = resp
+        }
+      }
+      window.onclick = function () {
+        G(ejer.innerHTML.includes("×"));
+      }
+      window.onkeydown = function() {
+        G(ejer.innerHTML.includes("×"));
+      };
+      G(false);
+    </script>
+  </body>
+</html>
