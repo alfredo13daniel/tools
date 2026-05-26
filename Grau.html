@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>×</title>
+  </head>
+  <body style="
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding-top: 30px;
+        box-sizing: border-box;">
+  <h1
+    id=a
+    style="
+      margin: 0;
+      font-size: 100px;
+      flex-grow: 1; 
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      font-family: georgia">
+  </h1>
+    <script>
+      let x;
+      let y;
+      let ejer;
+      let resp;
+      function G (titulo) {
+        x = Math.floor(Math.random()*21)-10;
+        y = Math.floor(Math.random()*21)-10;
+        if (titulo == false) {
+          resp = `<span>x<sup style="font-size: 0.5em; vertical-align: super";>${x+y}</sup>`;
+          ejer = document.getElementById("a")
+          a.innerHTML = `<span>x<sup style="font-size: 0.5em; vertical-align: super;">${x}</sup> &times x<sup style="font-size: 0.5em; vertical-align: super;">${y}</sup>`;
+        } else {
+          a.innerHTML = resp
+        }
+      }
+      window.onclick = function () {
+        G(ejer.innerHTML.includes("×"));
+      }
+      window.onkeydown = function() {
+        G(ejer.innerHTML.includes("×"));
+      };
+      G(false);
+    </script>
+  </body>
+</html>
