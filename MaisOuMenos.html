@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <title>±</title>
+  </head>
+  <body 
+    style="
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      
+  ">
+    <h1 id="h1" ></h1>
+
+    <script>
+      let x;
+      let y;
+      let rp;
+      let rm;
+      function ec (ec) {
+        if (ec == false) {
+          x = Math.floor(Math.random()*21)-10;
+          y = Math.floor(Math.random()*21)-10;
+          rp = x + y
+          rm = x - y
+          if (x < 0) {
+            x = "(" + x + ")"
+          }
+          if (y < 0) {
+            y = "(" + y + ")"
+          }
+          document.getElementById("h1") 
+          h1.innerHTML = `${x} ± ${y}`
+        } else {
+          document.getElementById("h1") 
+          h1.innerHTML = `
+          <div
+            style="
+              display: flex; 
+              flex-direction: row; 
+              gap: 50px;
+          ">
+            <div 
+              style="
+                background-color: #1a1a1a;
+                border-left: 8px solid #ffffff; 
+                padding: 15px 25px; 
+                border-radius: 4px 15px 15px 4px; 
+                width: fit-content;
+                text-align: left; 
+            ">
+              <span 
+                style="
+                  font-size: 20px;
+                  color: aaa;
+                  display: block;
+              ">
+                  na parte de mais ( + ):
+              </span>
+              <span 
+                style="
+                  font-size: 50px;
+                  display: block;
+              ">
+                  ${rp} 
+              </span>
+            </div>
+            <div 
+              style="
+                background-color: #1a1a1a;
+                border-left: 8px solid #ffffff; 
+                padding: 15px 25px; 
+                border-radius: 4px 15px 15px 4px; 
+                width: fit-content;
+                text-align: left; 
+            ">
+              <span 
+                style="
+                  font-size: 20px;
+                  color: aaa;
+                  display: block;
+              ">
+                  na parte de menos ( - ):
+              </span>
+              <span 
+                style="
+                  font-size: 50px;
+                  display: block;
+              ">
+                  ${rm} 
+              </span>
+            </div>
+          </div>
+        `}
+      }
+      window.onclick = function () {
+        ec(h1.innerHTML.includes("±"));
+      }
+      window.onkeydown = function() {
+        ec(h1.innerHTML.includes("±"));
+      };
+      ec (false);
+    </script>
+  </body>
+</html>
