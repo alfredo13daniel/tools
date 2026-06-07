@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptor TurboWarp Iframe</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent; /* Permite que sea transparente si TurboWarp lo requiere */
+        }
+        #contenedor {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contenedor">
+        <p style="color: #888;">Esperando datos de TurboWarp...</p>
+    </div>
+
+    <script>
+        // Escuchar los mensajes que vienen desde TurboWarp
+        window.addEventListener('message', function(event) {
+            // Seguridad opcional: Puedes verificar el origen si lo deseas
+            // if (event.origin !== "https://turbowarp.org") return;
+
+            const datos Recibidos = event.data;
+            const contenedor = document.getElementById('contenedor');
+
+            // Validar que el mensaje sea una cadena de texto
+            if (typeof datosRecibidos === 'string') {
+                
+                // Opción 1: Si envías un SVG completo
+                if (datosRecibidos.trim().startsWith('<svg')) {
+                    contenedor.innerHTML = datosRecibidos;
+                } 
+                
+                // Opción 2: Si envías código HTML general
+                else if (datosRecibidos.trim().startsWith('<')) {
+                    contenedor.innerHTML = datosRecibidos;
+                    
+                    // Truco: Si el HTML contiene scripts (<script>), innerHTML no los ejecuta por defecto.
+                    // Este bloque busca scripts y los ejecuta manualmente.
+                    const scripts = contenedor.querySelectorAll("script");
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement("script");
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
+                } 
+                
+                // Opción 3: Si envías texto plano (por si acaso)
+                else {
+                    contenedor.textContent = datosRecibidos;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
