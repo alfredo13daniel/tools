@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>enconte ao impostor</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body 
+    style="
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      height: 100vh;
+      margin: 0;
+  ">
+    <div style="display: flex; flex-direction: column; gap: 50px;">
+      <div class="cuadro" style="background-color: #222; border-radius: 30px; padding: 4px 60px; text-align: center; min-width: 150px; transition: background 0.3s;">
+        <h1 id="e1">a</h1>
+      </div>
+      <div class="cuadro" style="background-color: #222; border-radius: 30px; padding: 4px 60px; text-align: center; min-width: 150px; transition: background 0.3s;">
+        <h1 id="e2">b</h1>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 50px;">
+      <div class="cuadro" style="background-color: #222; border-radius: 30px; padding: 4px 60px; text-align: center; min-width: 150px; transition: background 0.3s;">
+        <h1 id="e3">c</h1>
+      </div>
+      <div class="cuadro" style="background-color: #222; border-radius: 30px; padding: 4px 60px; text-align: center; min-width: 150px; transition: background 0.3s;">
+        <h1 id="e4">d</h1>
+      </div>
+    </div>
+    
+    <script>
+      const elementos = [document.getElementById("e1"), document.getElementById("e2"), document.getElementById("e3"), document.getElementById("e4")];
+      const cuadros = document.querySelectorAll(".cuadro");
+      
+      let indiceImpostor = -1;
+      let mostrandoResultado = false; 
+      function generarNumero(excluirCero = false) {
+        let num = 0;
+        while (num === 0) {
+          num = Math.floor(Math.random() * 21) - 10;
+          if (!excluirCero) break;
+        }
+        return num;
+      }
+
+      function nuevoJuego() {
+        mostrandoResultado = false;
+        indiceImpostor = Math.floor(Math.random() * 4);
+        elementos.forEach((el, index) => {
+          cuadros[index].style.backgroundColor = "#222";
+          let a = generarNumero(true);
+          let b, c;
+          if (index === indiceImpostor) {
+            const tipoIncompleta = Math.random();
+            if (tipoIncompleta < 0.33) {
+              b = 0; c = generarNumero(true);
+            } else if (tipoIncompleta < 0.66) {
+              b = generarNumero(true); c = 0;
+            } else {
+              b = 0; c = 0;
+            }
+          } else {
+            b = generarNumero(true);
+            c = generarNumero(true);
+          }
+          let textoB = b === 0 ? "" : `${b > 0 ? '+' : ''}${b}x`;
+          let textoC = c === 0 ? "" : `${c > 0 ? '+' : ''}${c}`;
+          
+          el.innerHTML = `$$${a}x^2${textoB}${textoC}$$`;
+
+          if (window.MathJax) {
+            MathJax.typesetPromise([el]);
+          }
+        });
+      }
+
+      function revelarColores() {
+        cuadros.forEach((cuadro, index) => {
+          if (index === indiceImpostor) {
+            cuadro.style.backgroundColor = "#8b0000"; 
+          } else {
+            cuadro.style.backgroundColor = "#006400"; 
+          }
+        });
+        mostrandoResultado = true;
+      }
+      document.addEventListener("click", () => {
+        if (!mostrandoResultado) {
+          revelarColores();
+        } else {
+          nuevoJuego();
+        }
+      });
+      nuevoJuego();
+    </script>
+  </body>
+</html>
+
