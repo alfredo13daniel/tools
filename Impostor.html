@@ -95,6 +95,13 @@
           nuevoJuego();
         }
       });
+      document.addEventListener("keydown", () => {
+        if (!mostrandoResultado) {
+          revelarColores();
+        } else {
+          nuevoJuego();
+        }
+      });
       nuevoJuego();
     </script>
   </body>
