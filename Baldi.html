@@ -1,0 +1,296 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+      .oculto {
+        display: none !important;
+      }
+      .transparente {
+        opacity: 0;
+        pointer-events: none;
+      }
+      body {
+        --color: #fff;
+        background: var(--color);
+      }
+      
+      #notebooks {
+        width: min(100vw, 100vh);
+        display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+        position: fixed;
+          left: 50%;
+          top: 50%;
+          z-index: 1000;
+        transform: translate(-50%, -50%);
+      }
+      .notebooks {
+        width: 100%;
+        height: 100%;
+        object-fit: fill; 
+        display: block;
+      }
+      
+      #quiz {
+        width: min(100vw, 100vh);
+        display: flex;
+          justify-content: center;
+          align-items: center;     
+        position: fixed;
+          left: 50%;
+          top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #№Q, #ex, #res {
+        font-family: VT323;
+        font-size: 8px;
+        outline: none;
+        border: none;
+      }
+      #PlaceFace {
+        width: min(100vw, 100vh);
+        display: flex;
+          justify-content: center;
+          align-items: center;     
+        position: fixed;
+          left: 50%;
+          top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="notebooks">
+      <img class="notebooks" src="data:image/png;base64,UklGRmgAAABXRUJQVlA4TFwAAAAvZMAfELWoiSQp8ndycIMBYjJi/P3/rJMQCyZDzR+hq/+K3LZtsvfR7RvoCufKZ8B2vCgJyqYumZ4kq8tMxchJ+Y7diSCAJGkzHjrqQWCfHDrqP5XDNfI8BYGeMA==" id="N1">
+      <img class="notebooks" src="data:image/png;base64,UklGRmoAAABXRUJQVlA4TF4AAAAvZMAfEHWoiSQp8ndy8IAIDBCTYfL/Z7PhERIkJP/vNfVfkdu2TfY+un0DXWG/8hkwOwKJTKRs6pLpSbK6zFSMnJTv2J0IAkiSNuOhox4E9smho/5TOVwjz1MQ6AkD" id="N2">
+      <img class="notebooks" src="data:image/png;base64,UklGRmYAAABXRUJQVlA4TFkAAAAvZMAfEHWoiSQpcnKCkIMbDBCTYfL/pzaa0dHvvyK3bZvsfXT7BrrCVvkMOD2BRCZSNnXJ9CRZXWYqRk7Kd+xOBAEkSZvx0FEPAvvk0FH/qRyukecpCPSEAQA="     id="N3">
+      <img class="notebooks" src="data:image/png;base64,UklGRmoAAABXRUJQVlA4TF0AAAAvZMAfEDWoiSQp8ndycIMBYjJSBP7/7HSJBZOp5m/Q1X9Fbts22fvo9g10hfPKZ8Ds8EQSgbKpS6YnyeoyUzFyUr5jdyIIIEnajIeOehDYJ4eO+k/lcI08T0GgJwwA" id="N4">
+      <img class="notebooks" src="data:image/png;base64,UklGRmoAAABXRUJQVlA4TF4AAAAvZMAfEDUoiiSpsXNakIMbDPDmh8mcZ+deLJjM3yDVrv4rctu2yd5Ht2+gK2wrnwFnTyCRiZRNXTI9SVaXmYqRk/IduxNBAEnSZjx01IPAPjl01H8qh2vkeQoCPWEA" id="N5">
+      <img class="notebooks" src="data:image/png;base64,UklGRmIAAABXRUJQVlA4TFYAAAAvZMAfEHWoiSQpOn3IwQ0GiMkw+f9TG8Xo91+R27ZN9j66fQNdYVM+A64XJFlUNnXJ9CRZXWYqRk7Kd+xOBAEkSZvx0FEPAvvk0FH/qRyukecpCPSEAQ=="         id="N6">
+      <img class="notebooks" src="data:image/png;base64,UklGRmQAAABXRUJQVlA4TFgAAAAvZMAfEJWoiSQp8ndycIMBYjJi/P3/rIOZGv3+K3LbtsneR7dvoCucK58B0+GJJAJlU5dMT5LVZaZi5KR8x+5EEECStBkPHfUgsE8OHfWfyuEaeZ6CQE8Y"         id="N7">
+    </div>
+    <div id="quiz" class="oculto">
+      <svg id="iPad" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="width: 100%; height: auto;">
+        <rect width="15" height="30" x="23" y="35" fill="#fff" color="#000"></rect>
+        <image id="resp1" x="24.5" y="35" width="10" height="10"/>
+        <image id="resp2" x="23.5" y="45" width="10" height="10"/>
+        <image id="resp3" x="23"   y="55" width="10" height="10"/>
+        
+        <foreignObject x="25" y="71" width="40" height="14">
+          <video id="habla" height="100%" autoplay loop muted>
+            <source id="video" src="https://alfredo13daniel.github.io/tools/Hablabaldi.mp4" type="video/mp4" />
+          </video>
+        </foreignObject>
+        
+        <foreignObject x="25" y="71" width="40" height="14">
+          <video id="enojado" class="transparente" height="100%" preload="auto" muted>
+            <source id="video" src="https://alfredo13daniel.github.io/tools/Enojadobaldi.mp4" type="video/mp4" />
+          </video>
+        </foreignObject>
+        <image width="100%" height="100%" href="https://alfredo13daniel.github.io/tools/iPadmit.png"/>
+  
+        <foreignObject x="40" y="38" width="50" height="15">
+          <div id="№Q">solve math Q1 aaaa</div>
+        </foreignObject>        
+        <foreignObject x="40" y="53" width="50" height="15">
+          <div id="ex">solve math Q1 aaaa</div>
+        </foreignObject>
+        
+        <foreignObject x="49.5" y="72" width="40" height="14">
+          <form>
+            <input id="res" placeholder="ENTER ANWER" type="number">
+          </form>
+        </foreignObject>
+      </svg>
+    </div>
+    <img id="PlaceFace" class="oculto" src="https://alfredo13daniel.github.io/tools/PlaceFace.webp">
+    <script>
+      let notebooks = 7;
+      let Q = 1;
+      let quizCorrect = true;
+      const elogios = [
+        "WOW! YOU EXIST!",
+        "I CAN'T BELIEVE IT!",
+        "YOU'RE DOING FANTASTIC!",
+        "GREAT JOB! THAT'S GOOD!",
+        "INCREDIBLE!",
+        "YOU ARE SMART!"
+      ]
+      const AudioElogios = [
+        new Audio("https://alfredo13daniel.github.io/tools/Praise1.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Praise2.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Praise3.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Praise4.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Praise5.mp3")
+      ]
+      const advertencia = [
+        "I HEAR EVERY DOOR YOU OPEN",
+        "I GET CLOSER...",
+        "INCORRECT",
+        "01001001",
+        "YOU MADE BALDI SAD...",
+        "SOMETHING WENT WRONG..."
+      ]
+      const Problem = [
+        new Audio("https://alfredo13daniel.github.io/tools/Problem1.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Problem2.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Problem3.mp3"),
+      ]
+      const sound = [
+        new Audio("https://alfredo13daniel.github.io/tools/EndMusiciPad.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/musiciPad.mp3"),
+        new Audio("https://alfredo13daniel.github.io/tools/Musicbaldi.mp3")
+      ]
+      function preguntas() {
+        if (Q >= 4) {
+          document.getElementById("ex").textContent = "";
+          if (quizCorrect) {
+            document.getElementById("№Q").textContent = elogios[Math.floor(Math.random() * elogios.length)];
+          } else {
+            document.getElementById("№Q").textContent = advertencia[Math.floor(Math.random() * advertencia.length)];
+          }
+          setTimeout(function() {
+            quiz (false);          
+            Q = 1
+          }, 5000)
+        } else {
+          document.getElementById("№Q").textContent = `SOLVE MATH ${Q}`;
+          if (Q == 1) {
+            document.getElementById("ex").textContent = `${Math.floor(Math.random() * 9)}${Math.random() > 0.5 ? "+": "-"}${Math.floor(Math.random() * 9)}=`;
+          } else if (notebooks == 0 && Q == 3) {
+            document.getElementById("ex").innerHTML = `
+              <span style="position: absolute; left: 0; top: 0;">${Math.floor(Math.random() * 900000)}</span>
+              <span style="position: absolute; left: 2px; top: 1px; opacity: 0.8;">${Math.floor(Math.random() * 900000)}</span>
+              <span style="position: absolute; left: -1px; top: -1px; opacity: 0.7;">+ ${Math.floor(Math.random() * 90000)}</span>
+            `;
+          } else {
+            
+            if (Math.random() > 0.5) {
+              document.getElementById("ex").textContent = `${Math.floor(Math.random() * 9)}×${Math.floor(Math.random() * 9)}=`
+            } else {
+              let y = Math.floor(Math.random() * 8) + 1;
+              let x = y * Math.floor(Math.random() * 9);
+              document.getElementById("ex").textContent = `${x}÷${y}=`;
+            }
+          }
+        }
+        if (quizCorrect) {
+          let a = Math.floor(Math.random()*4);
+          if (Q >= 2) {
+            AudioElogios[a].play();
+          }
+          AudioElogios[a].addEventListener("ended", function() {
+            Problem[Q-1].play(); 
+            Problem[Q-1].addEventListener("ended", function() {
+              if (notebooks <= 0 && Q == 3) {
+                new Audio("https://alfredo13daniel.github.io/tools/Screech.mp3").play();
+                new Audio("https://alfredo13daniel.github.io/tools/equals.mp3").play();            
+              } else {
+                explicar(document.getElementById("ex").textContent[0], document.getElementById("ex").textContent[1], document.getElementById("ex").textContent[2])
+              }
+            }, { once: true });
+          }, { once: true });
+          if (Q == 1) {
+            Problem[0].play();
+            Problem[0].addEventListener("ended", function() {
+              explicar(document.getElementById("ex").textContent[0], document.getElementById("ex").textContent[1], document.getElementById("ex").textContent[2])
+            }, { once: true });
+          }
+        }
+      }
+      function quiz(quiz) {
+        if (quiz == true) {
+          quizCorrect = true;
+          sound[2].loop = true;
+          sound[2].play();
+          sound[2].pause();
+          sound[2].currentTime = 0;
+          document.getElementById("resp1").classList.add("oculto");
+          document.getElementById("resp1").setAttribute("href", "data:image/webp;base64,UklGRlYAAABXRUJQVlA4TEkAAAAvH8AHEAoGbSM54o/67r5uA5BI0Yv+TwBTL83TDGvQyBo08s5g3pmOTEvQQH0yyPsH/vsc5zuoEvhmGG+PIfCF6Dx4IjMP8gIBAA==");
+          document.getElementById("resp2").classList.add("oculto");
+          document.getElementById("resp2").setAttribute("href", "data:image/webp;base64,UklGRlYAAABXRUJQVlA4TEkAAAAvH8AHEAoGbSM54o/67r5uA5BI0Yv+TwBTL83TDGvQyBo08s5g3pmOTEvQQH0yyPsH/vsc5zuoEvhmGG+PIfCF6Dx4IjMP8gIBAA==");
+          document.getElementById("resp3").classList.add("oculto");
+          document.getElementById("resp3").setAttribute("href", "data:image/webp;base64,UklGRlYAAABXRUJQVlA4TEkAAAAvH8AHEAoGbSM54o/67r5uA5BI0Yv+TwBTL83TDGvQyBo08s5g3pmOTEvQQH0yyPsH/vsc5zuoEvhmGG+PIfCF6Dx4IjMP8gIBAA==");
+          document.body.style.setProperty("--color", "#000");
+          document.getElementById("notebooks").classList.add("oculto");
+          document.getElementById("quiz").classList.remove("oculto");
+          document.getElementById(event.target.id).classList.add("transparente");
+          document.getElementById("enojado").classList.add("transparente");
+          document.getElementById("habla").classList.remove("transparente");
+          document.getElementById("habla").play();
+          preguntas();
+          sound[1].play();
+          sound[1].addEventListener('timeupdate', function() {
+            if (this.currentTime > this.duration - 0.01) {
+            this.currentTime = 0;
+            this.play();
+           }
+          });
+        } else {
+          document.body.style.setProperty("--color", "#fff");
+          document.getElementById("notebooks").classList.remove("oculto");
+          document.getElementById("quiz").classList.add("oculto");
+          sound[1].pause();
+          sound[1].currentTime = 0;
+          if (quizCorrect == true) {
+            sound[2].play();            
+          }
+        }
+      }
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (document.getElementById("res").value == 31718) {
+          document.body.style.setProperty("--color", "#fff")
+          document.getElementById("quiz").classList.add("oculto");
+          document.getElementById("notebooks").classList.add("oculto");
+          document.getElementById("PlaceFace").classList.remove("oculto");
+          return;
+        }
+        if (eval(document.getElementById("ex").textContent.replace("×", "*").replace("÷", "/").replace("=", "")) !== Number(document.getElementById("res").value)) {
+          document.getElementById(`resp${Q}`).setAttribute("href", "data:image/webp;base64,UklGRmgAAABXRUJQVlA4TFsAAAAvH8AHEFDctm3k/ddO0lru8Z7/mH8FbtsohWOGT4g/UBfZSkzso/1GjH3s92loYw5Pa5ta2IYGFmINoGEocQ4iF/AmiYHwvSWA34U7Yfjd8XfN/0Xg3wX+5Q0UAA==")
+          if (quizCorrect) {    
+            document.getElementById("habla").classList.add("transparente");
+            document.getElementById("habla").pause();
+            document.getElementById("enojado").play()
+            document.getElementById("enojado").classList.remove("transparente")
+            sound[0].play();
+            sound[1].pause();
+            sound[1].currentTime = 0;
+            quizCorrect = false;
+          } else {
+          }
+        }
+        document.getElementById(`resp${Q}`).classList.remove("oculto");
+        Q = Q + 1;
+        preguntas();
+        document.getElementById("res").value = "";
+      });
+      document.getElementById("notebooks").addEventListener("click", function() {
+        if (notebooks <= 0) {
+          quiz(true);
+        } else if (event.target.id !== "notebooks") {
+          notebooks--;
+          quiz(true);
+        }
+      });
+      
+      function reproducirAudio(nombreArchivo) {
+        return new Promise((resolve) => {
+          const audio = new Audio(`https://alfredo13daniel.github.io/tools/${encodeURIComponent(nombreArchivo)}.mp3`);
+          audio.onended = () => resolve();
+          audio.onerror = () => resolve(); 
+          audio.play();
+        });
+      }
+      async function explicar(x, ex, y) {
+        await reproducirAudio(x);
+        await reproducirAudio(ex);
+        await reproducirAudio(y);
+        await reproducirAudio("ecuals")
+      }
+    </script>
+  </body>
+</html>
